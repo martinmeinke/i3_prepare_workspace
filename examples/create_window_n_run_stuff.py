@@ -1,15 +1,17 @@
 #!/usr/bin/env python3
 
 import re
+import os
 import i3ipc
 
 
 i3 = i3ipc.Connection()
 
+
 def create_terminal_with_input(prompt):
     x = i3.command("exec i3-sensible-terminal" \
-                   " -e bash /home/martin/Development/i3_setup_windows/open_terminal.sh " \
-                   "\"{}\"".format(prompt))
+                   " -e bash {}/../open_terminal.sh \"{}\""
+                   .format(os.path.dirname(os.path.realpath(__file__)), prompt))
     return x
 
 
@@ -28,7 +30,8 @@ def next_workspace_id():
 
     return new
 
+
 if __name__ == '__main__':
     i3.command("workspace {};".format(next_workspace_id()))
-    create_terminal_with_input("echo Hello World")
-    create_terminal_with_input("tail -f /var/log/syslog")
+    print(create_terminal_with_input("echo Hello World"))
+    print(create_terminal_with_input("tail -f /var/log/syslog"))
