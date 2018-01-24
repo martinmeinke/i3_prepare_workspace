@@ -6,5 +6,6 @@ else
     TERM=$TERM;
 fi
 
-$TERM -e "bash -c 'write_to_prompt $@;bash'"
+x-terminal-emulator -x bash -c "write_to_prompt $@;bash"
+
 
