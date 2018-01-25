@@ -9,8 +9,8 @@ i3 = i3ipc.Connection()
 
 
 def create_terminal_with_input(prompt):
-    command_string = "exec i3-sensible-terminal" \
-        " -e bash {}/../open_terminal.sh \"{}\"".format(os.path.dirname(os.path.realpath(__file__)), prompt)
+    command_string = "exec gnome-terminal" \
+        " -x bash {}/../open_terminal.sh \"{}\"".format(os.path.dirname(os.path.realpath(__file__)), prompt)
 
     print(command_string)
     x = i3.command(command_string)
